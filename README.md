@@ -1,7 +1,7 @@
 # Advent-of-code
 Solving puzzles on the Advent of code website.
 
-Currently working on it in PHP making the previous puzzles aswell.
+Currently working on it in PHP/Python making the previous puzzles aswell.
 
 To execute this code in PHP:
   - Make sure you have a webserver of local server hosting
