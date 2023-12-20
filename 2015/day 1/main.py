@@ -1,3 +1,14 @@
-data = open("input.txt").read()
+data = open("_input.txt").read()
+pos = 0
 
-print(data.count("(") - data.count(")"))
+print("Part 1: ", data.count("(") - data.count(")"))
+
+for i, x in enumerate(data):
+    if pos == -1:
+        print(f"Part 2: {i}")
+        break
+
+    if x == "(":
+        pos += 1
+    else:
+        pos -= 1
