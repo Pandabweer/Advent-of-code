@@ -4,6 +4,9 @@ py:
 php:
 	php $(target)
 
+js:
+	node $(target)
+
 c:
 	clang $(target) -o main
 	./main
