@@ -1,26 +1,21 @@
 <?php
 $input = file_get_contents("_input.txt");
-echo "Part 1:<br>";
+$found1 = $found2 = false;
+$i = 0;
 
-for ($i = 0; $i < 9999999999999; $i++) {
-    if (strpos(md5($input . $i), "00000") !== false) {
-        if (substr(md5($input . $i), 0, 5) == "00000") {
-            echo "Number: $i  Hash: " . md5($input . $i) . "<br>";
-            break;
-        }
+while ($found1 == false || $found2 == false) {
+    $hash = md5($input . $i);
+
+    if ($found1 == false && substr($hash, 0, 5) === "00000") {
+        echo "Part 1: " . $i . "\n";
+        $found1 = true;
     }
-}
 
-// part 2
-echo "<br>Part 2:<br>";
-
-for ($i = 0; $i < 9999999999999; $i++) {
-    if (strpos(md5($input . $i), "000000") !== false) {
-        if (substr(md5($input . $i), 0, 5) == "000000") {
-            echo "Number: $i  Hash: " . md5($input . $i) . "<br>";
-            break;
-        }
+    if ($found2 == false && substr($hash, 0, 6) === "000000") {
+        echo "Part 2: " . $i . "\n";
+        $found2 = true;
     }
-}
 
+    $i++;
+}
 ?>
