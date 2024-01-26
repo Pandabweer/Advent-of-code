@@ -54,7 +54,6 @@ What is the <span class="indicator">position</span> of the character that causes
    p {
       color: #ccc;
    }
-
    .star {
       color: #ffff66;
       text-shadow: 0 0 5px #ffff66;

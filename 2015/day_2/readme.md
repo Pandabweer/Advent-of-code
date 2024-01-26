@@ -41,7 +41,6 @@ How many total <span class="indicator">feet of ribbon</span> should they order?
    p {
       color: #ccc;
    }
-
    .star {
       color: #ffff66;
       text-shadow: 0 0 5px #ffff66;
