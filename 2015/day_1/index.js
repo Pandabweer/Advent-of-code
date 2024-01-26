@@ -7,7 +7,7 @@ var pos = 0
 
 for (const [i, c] of array.entries()) {
     if (pos == -1) {
-        console.log('Part 2:', i);
+        console.log(`Part 2: ${i}`);
         break;
     }
 
