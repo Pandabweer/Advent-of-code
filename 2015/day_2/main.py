@@ -1,7 +1,6 @@
 data = open("_input.txt").read()
 
-wrapping = 0
-ribbon = 0
+wrapping, ribbon = 0, 0
 
 for d in data.split("\n"):
     l, w, h = map(int, d.split("x"))
