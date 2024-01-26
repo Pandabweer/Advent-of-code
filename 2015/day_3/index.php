@@ -1,63 +1,23 @@
 <?php
-$santax = $santay = $counter = 0;
+$data = file_get_contents("_input.txt");
+$santa_pos = $robo_pos = $santa_pos_old = [0, 0];
 
-foreach (str_split(file_get_contents("_input.txt")) as $inp) {
-    if ($inp == "^" || $inp == "v") {
-        if ($inp == "^") {
-            $santay++;
-        } else {
-            $santay--;
-        }
-    }
-    if ($inp == ">" || $inp == "<") {
-        if ($inp == ">") {
-            $santax++;
-        } else {
-            $santax--;
-        }
-    }
-    $array2[$santax][$santay] = "0";
-    $counter++;
-}
+$santa_old_houses = $santa_houses = $robo_houses = [];
+$directions = ["^" => [0, 1], "v" => [0, -1], ">" => [1, 0], "<" => [-1, 0]];
 
-echo "Part 1:<br>" . array_sum(array_map("count", $array2)) . "<br><br>Part 2:<br>";
-$santax = $santay = $counter = $robox = $roboy = 0;
+foreach (str_split($data) as $i => $ins) {
+    $move = $directions[$ins];
+    $santa_pos_old = [$santa_pos_old[0] + $move[0], $santa_pos_old[1] + $move[1]];
+    $santa_old_houses[implode(',', $santa_pos_old)] = true;
 
-foreach (str_split(file_get_contents("_input.txt")) as $inp) {
-    if ($counter % 2 == "0") {
-        if ($inp == "^" || $inp == "v") {
-            if ($inp == "^") {
-                $santay++;
-            } else {
-                $santay--;
-            }
-        }
-        if ($inp == ">" || $inp == "<") {
-            if ($inp == ">") {
-                $santax++;
-            } else {
-                $santax--;
-            }
-        } 
-        $array[$santax][$santay] = "0";
+    if ($i % 2) {
+        $robo_pos = [$robo_pos[0] + $move[0], $robo_pos[1] + $move[1]];
+        $robo_houses[implode(',', $robo_pos)] = true;
     } else {
-        if ($inp == "^" || $inp == "v") {
-            if ($inp == "^") {
-                $roboy++;
-            } else {
-                $roboy--;
-            }
-        }
-        if ($inp == ">" || $inp == "<") {
-            if ($inp == ">") {
-                $robox++;
-            } else {
-                $robox--;
-            }
-        }
-        $array[$robox][$roboy] = "0";
+        $santa_pos = [$santa_pos[0] + $move[0], $santa_pos[1] + $move[1]];
+        $santa_houses[implode(',', $santa_pos)] = true;
     }
-    $counter++;
 }
-echo array_sum(array_map("count", $array));
+
+echo "Part 1: " . count($santa_old_houses) . "\n" . "Part 2: " . count(array_merge($santa_houses, $robo_houses));
 ?>

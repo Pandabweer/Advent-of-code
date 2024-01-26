@@ -1,4 +1,4 @@
-data = open("_input.txt").read().strip()
+data = open("_input.txt").read()
 santa_pos = robo_pos = santa_pos_old = (0, 0)
 
 santa_old_houses = set([santa_pos_old])
