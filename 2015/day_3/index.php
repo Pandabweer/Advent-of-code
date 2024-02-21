@@ -20,4 +20,3 @@ foreach (str_split($data) as $i => $ins) {
 }
 
 echo "Part 1: " . count($santa_old_houses) . "\n" . "Part 2: " . count(array_merge($santa_houses, $robo_houses));
-?>

@@ -7,14 +7,21 @@ class AOC2021:
     def file_open(*, day: int, split: str = None, to_type: Any = None) -> str:
         with open(f"./input_day_{day}.txt", "r+") as inp:
             data = inp.read().split(split) if split else inp.read()
-            return (list(map(to_type, data)) if isinstance(data, list) else to_type(data)) if to_type else data
+            return (
+                (list(map(to_type, data)) if isinstance(data, list) else to_type(data))
+                if to_type
+                else data
+            )
 
     @staticmethod
     def fmt_solution(output: tuple[int, int]) -> str:
         return f"part 1: {output[0]}, part 2: {output[1]}"
 
     def solve_all(self) -> None:
-        for name, func in filter(lambda x: "day" in x[0], inspect.getmembers(self, predicate=inspect.ismethod)):
+        for name, func in filter(
+            lambda x: "day" in x[0],
+            inspect.getmembers(self, predicate=inspect.ismethod),
+        ):
             print(f"Executing {name}, {func()}")
 
     def day1(self) -> str:
@@ -133,7 +140,7 @@ class AOC2021:
                 part1_count += 1
 
             try:
-                csum = measure + inp[i+1] + inp[i+2]
+                csum = measure + inp[i + 1] + inp[i + 2]
                 if prev_csum < csum and i:
                     part2_count += 1
             except IndexError:
@@ -234,7 +241,7 @@ class AOC2021:
                 case "up":
                     y -= amount
 
-        return self.fmt_solution((x*y, x*y2))
+        return self.fmt_solution((x * y, x * y2))
 
     def day3(self) -> str:
         """
@@ -353,7 +360,7 @@ class AOC2021:
 
         def filter_data_bitwise(filter_by_most_common: bool = True):
             data = [int(line, 2) for line in inp]
-            for bit in reversed([2 ** n for n in range(N)]):
+            for bit in reversed([2**n for n in range(N)]):
                 rat = sum(1 for num in data if num & bit) / len(data)
                 wanted_bit_value = bit * int((rat >= 0.5) == filter_by_most_common)
                 data = [x for x in data if x & bit == wanted_bit_value]
@@ -362,8 +369,11 @@ class AOC2021:
             return data
 
         return self.fmt_solution(
-            (int(gamma, 2) * int(epsilon, 2),
-             filter_data_bitwise()[0] * filter_data_bitwise(filter_by_most_common=False)[0])
+            (
+                int(gamma, 2) * int(epsilon, 2),
+                filter_data_bitwise()[0]
+                * filter_data_bitwise(filter_by_most_common=False)[0],
+            )
         )
 
 

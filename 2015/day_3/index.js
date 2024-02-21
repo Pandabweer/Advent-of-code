@@ -1,13 +1,17 @@
-const data = require('fs').readFileSync('_input.txt', 'utf8');
-let [santaPos, roboPos, santaPosOld] = [[0, 0], [0, 0], [0, 0]];
+const data = require("fs").readFileSync("_input.txt", "utf8");
+let [santaPos, roboPos, santaPosOld] = [
+  [0, 0],
+  [0, 0],
+  [0, 0],
+];
 
 const santaOldHouses = new Set([santaPosOld.toString()]);
 const santaHouses = new Set([santaPos.toString()]);
 const roboHouses = new Set([roboPos.toString()]);
 
-const directions = {'^': [0, 1], 'v': [0, -1], '>': [1, 0], '<': [-1, 0]};
+const directions = { "^": [0, 1], v: [0, -1], ">": [1, 0], "<": [-1, 0] };
 
-data.split('').forEach((ins, i) => {
+data.split("").forEach((ins, i) => {
   const move = directions[ins];
   santaPosOld = [santaPosOld[0] + move[0], santaPosOld[1] + move[1]];
   santaOldHouses.add(santaPosOld.toString());
@@ -21,4 +25,6 @@ data.split('').forEach((ins, i) => {
   }
 });
 
-console.log(`Part 1: ${santaOldHouses.size}\nPart 2: ${new Set([...santaHouses, ...roboHouses]).size}`);
+console.log(
+  `Part 1: ${santaOldHouses.size}\nPart 2: ${new Set([...santaHouses, ...roboHouses]).size}`,
+);

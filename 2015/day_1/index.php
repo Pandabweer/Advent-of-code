@@ -16,4 +16,3 @@ foreach (str_split($data) as $out) {
     }
     $i++;
 }
-?>
