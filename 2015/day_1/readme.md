@@ -1,6 +1,5 @@
 #### --- Day 1: Not Quite Lisp ---
 <p>
-
 Santa was hoping for a white Christmas, but his weather machine's "snow" function is powered by stars,
 and he's fresh out! To save Christmas, he needs you to collect <span class="star">fifty stars</span> by December 25th.
 
@@ -25,10 +24,10 @@ For example:
    - `)))` and `)())())` both result in floor `-3`.
 
 To <span class="indicator">what floor</span> do the instructions take Santa?</p>
+</p>
 
 #### --- Part Two ---
 <p>
-
 Now, given the same instructions, find the <span class="indicator">position</span> of the first character that causes him to enter the basement (floor `-1`).
 The first character in the instructions has position `1`, the second character has position `2`, and so on.
 
@@ -38,7 +37,7 @@ For example:
    - `()())` causes him to enter the basement at character position `5`.
 
 What is the <span class="indicator">position</span> of the character that causes Santa to first enter the basement?</p>
-
+</p>
 <details><summary>CSS for IDE's</summary>
 
 <style>
@@ -53,6 +52,9 @@ What is the <span class="indicator">position</span> of the character that causes
    }
    p {
       color: #ccc;
+   }
+   a {
+      color: #090
    }
    .star {
       color: #ffff66;

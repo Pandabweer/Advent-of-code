@@ -8,7 +8,4 @@ for i, x in enumerate(data):
         print(f"Part 2: {i}")
         break
 
-    if x == "(":
-        pos += 1
-    else:
-        pos -= 1
+    pos += 1 if x == "(" else -1

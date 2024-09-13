@@ -1,22 +1,13 @@
 const data = require("fs").readFileSync("_input.txt", "utf8");
+let pos = 0;
 
-console.log(
-  "Part 1:",
-  (data.match(/\(/g) || []).length - (data.match(/\)/g) || []).length,
-);
+console.log("Part 1:", (data.match(/\(/g) || []).length - (data.match(/\)/g) || []).length);
 
-const array = data.split("");
-var pos = 0;
-
-for (const [i, c] of array.entries()) {
+for (const [i, c] of data.split("").entries()) {
   if (pos == -1) {
     console.log(`Part 2: ${i}`);
     break;
   }
 
-  if (c == "(") {
-    pos += 1;
-  } else {
-    pos -= 1;
-  }
+  pos += c == "(" ? 1 : -1
 }

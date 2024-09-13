@@ -9,10 +9,6 @@ foreach (str_split($data) as $out) {
         echo "\nPart 2: " . $i;
         break;
     }
-    if ($out == "(") {
-        $pos++;
-    } else {
-        $pos--;
-    }
+    $pos += ($out == "(") ? 1 : -1;
     $i++;
 }
